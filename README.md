@@ -23,8 +23,9 @@ research_dir = pathlib.Path.cwd()
 subdirs_with_dates = []
 
 for d in research_dir.iterdir():
-    # Skip hidden dirs and the local _site build output (never present in CI)
-    if d.is_dir() and not d.name.startswith('.') and d.name != '_site':
+    # Skip hidden dirs and local build/tool output like _site and __pycache__
+    # (research folders are kebab-case, never underscore-prefixed)
+    if d.is_dir() and not d.name.startswith(('.', '_')):
         readme_path = d / "README.md"
         history_path = str(readme_path.relative_to(research_dir))
         # Get the date of the first commit that touched this project's README
