@@ -13,6 +13,8 @@ Your final commit should include just that folder and selected items from its co
 
 Do NOT include full copies of code that you fetched as part of your investigation. Your final commit should include only new files you created or diffs showing changes you made to existing code.
 
+Commit headlines always start with one of four prefixes: `research:` for research project commits (your default), or `docs:` / `feat:` / `fix:` for changes to the repo's plumbing (scripts, workflow, root docs).
+
 Don't create a _summary.md file - these are added automatically after you commit your changes.
 
 If your project includes HTML demos, link to the published GitHub Pages URL in
