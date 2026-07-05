@@ -203,14 +203,7 @@ This README uses [cogapp](https://nedbatchelder.com/code/cog/) to automatically 
 
 A GitHub Action runs `cog -r -P README.md` on every push to master and commits any changes to the README or new `_summary.md` files, then builds and deploys the GitHub Pages site.
 
-To update locally:
+To update locally: `GITHUB_TOKEN=$(gh auth token) uv run --with-requirements requirements.txt cog -r -P README.md`
 
-```bash
-GITHUB_TOKEN=$(gh auth token) uv run --with-requirements requirements.txt cog -r -P README.md
-```
-
-The script discovers all project subdirectories, sorts them by the first commit that touched each folder's `README.md` (newest first), and for each folder either reuses the cached `_summary.md` or generates a new one with `llm -m <!--[[[cog
-print(MODEL, end='')
-]]]-->
-github/gpt-4.1
-<!--[[[end]]]-->`. To regenerate a specific project's description, delete its `_summary.md` file and run cog again.
+The script discovers all project subdirectories, sorts them by the first commit that touched each folder's `README.md` (newest first), and for each folder either reuses the cached `_summary.md` or generates a new one with `llm -m github/gpt-4.1`.
+To regenerate a specific project's description, delete its `_summary.md` file and run cog again.
