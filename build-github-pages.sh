@@ -17,4 +17,5 @@ rsync -a ./ "$site_dir"/ \
   --exclude .pytest_cache/
 
 uv run python render-readme-index.py README.md "$site_dir/index.html"
+uv run python render-readme-index.py HOWTO.md "$site_dir/HOWTO.html"
 touch "$site_dir/.nojekyll"

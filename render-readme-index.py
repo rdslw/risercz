@@ -130,7 +130,10 @@ def main():
 
     input_path = Path(sys.argv[1])
     output_path = Path(sys.argv[2])
+    # On the published site link to the rendered HOWTO.html; on github.com
+    # the README keeps linking to HOWTO.md, which GitHub renders natively
     markdown = expand_header_dates(input_path.read_text(encoding="utf-8"))
+    markdown = markdown.replace("](HOWTO.md)", "](HOWTO.html)")
     rendered = render_github_markdown(markdown)
     output_path.write_text(
         page_template(title_from_markdown(markdown), rendered),
