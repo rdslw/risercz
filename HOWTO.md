@@ -8,12 +8,38 @@ How to run research projects in this repo. Agent-facing instructions live in [AG
 2. **Launch an async agent** against `rdslw/risercz`:
    - **Claude**: Claude app / [claude.ai/code](https://claude.ai/code) → new session on this repo, in an environment with network access enabled → paste prompt.
    - **Codex**: ChatGPT app → Codex → this repo, environment with internet access on → paste prompt.
-3. **Walk away.** The agent follows AGENTS.md: creates a folder, keeps `notes.md` as it works, writes a `README.md` report, files a PR.
-4. **Review the PR** (GitHub mobile app is enough): read the report's README first, skim `notes.md` for the trail. If wrong or incomplete, send follow-up prompts to the same session.
+3. **Walk away.** The agent follows AGENTS.md: creates a folder, keeps `notes.md` as it works, writes a `README.md` report, and pushes a branch.
+4. **Review the diff** (in the agent's session or the GitHub app): read the report's README first, skim `notes.md` for the trail. If wrong or incomplete, send follow-up prompts to the same session; when satisfied, create the PR from the session.
 5. **Keep provenance in the PR description**: the original prompt as a `>` blockquote plus a link to the session transcript. Claude Code adds `Claude-Session:` links automatically; paste the Codex task link manually.
 6. **Merge.** CI does the rest: generates a cached `_summary.md` via GitHub Models, rebuilds the README index, injects the AI-generated-note disclaimer into the project README, and deploys everything to <https://rdslw.github.io/risercz/>. No manual steps.
 
 Treat the reports as unreviewed AI output: useful, linkable, never blindly trusted.
+
+## Async setup (i.e. phone)
+
+Steps 1–4 are one-time; 5–7 are the per-research routine.
+
+### Claude
+
+1. One-time, in a desktop browser: [claude.ai/code](https://claude.ai/code) → install the **Claude GitHub App** with access to `rdslw/risercz` (manage later via github.com → Settings → Applications → Claude → Configure).
+2. In the same onboarding, create a cloud environment (e.g. `risercz`) and raise **Network access** above the default `Trusted` (package registries only) so the agent can fetch arbitrary URLs — safe, this repo holds no secrets.
+3. Leave environment variables and setup script empty; the VM ships Python/uv, Node, Rust, Go and Docker.
+4. Install the [Claude iOS app](https://apps.apple.com/us/app/claude-by-anthropic/id6473753684) and [GitHub mobile app](https://github.com/mobile) for PR review and merging.
+
+5. Per task: Claude app → **Code** tab → `rdslw/risercz` @ `master`, mode **Accept edits** → paste prompt (recipe below) → submit and close the app; the session runs on Anthropic's VM and persists.
+6. When done: open the session, tap the `+N −M` diff, comment inline or send follow-ups, then **Create PR** — the `Claude-Session:` transcript link is added automatically; add your prompt as a `>` blockquote.
+7. Merge in the GitHub app; CI publishes. Tips: prefill launches with `https://claude.ai/code?repo=rdslw/risercz&prompt=...`; **Auto-fix** can react to CI failures and review comments.
+
+### Codex
+
+1. One-time, in a desktop browser: [chatgpt.com/codex](https://chatgpt.com/codex) → connect GitHub via the **Codex GitHub App**, granting `rdslw/risercz` (Codex is included in Plus/Pro/Business).
+2. Create an environment for the repo at [codex/settings/environments](https://chatgpt.com/codex/settings/environments); the default universal container (Python, Node, Rust, Go) suffices.
+3. In that environment, enable [agent internet access](https://developers.openai.com/codex/cloud/internet-access) — it is **off by default** for cloud tasks.
+4. Install the ChatGPT iOS app and sign in (Codex appears in the side menu) and [GitHub mobile app](https://github.com/mobile) for PR review and merging.
+
+5. Per task: app → **Codex** → new task → `rdslw/risercz` + `master` + your environment → paste prompt → submit as a **Code** task; a fresh cloud container clones the repo and works asynchronously.
+6. Review logs and the diff in the task view, iterate with follow-up messages, then create the PR — paste your prompt as a `>` blockquote plus the Codex task link manually (Codex adds no transcript link).
+7. Merge in the GitHub app; CI publishes. Tip: commenting **`@codex`** on any issue or PR in this repo also launches a task, straight from the GitHub app.
 
 ## How to construct a prompt
 
