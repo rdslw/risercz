@@ -4,10 +4,13 @@
 import html
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 
 def title_from_markdown(markdown):
@@ -44,6 +47,26 @@ def render_github_markdown(markdown):
     except urllib.error.HTTPError as ex:
         message = ex.read().decode("utf-8", errors="replace")
         raise SystemExit(f"GitHub Markdown API failed: {ex.code} {message}") from ex
+
+
+# Project dates in README.md are UTC (see the cog block there). For the
+# published page, expand each into hardcoded extra timezones at build time.
+# Only trailing dates on "### " index header lines are touched, so
+# timestamps inside project content can never be affected.
+DATE_TZS = [("NY", ZoneInfo("America/New_York")), ("WAW", ZoneInfo("Europe/Warsaw"))]
+HEADER_DATE_RE = re.compile(r"^(### .*)\((\d{4}-\d{2}-\d{2} \d{2}:\d{2})\)\s*$", re.MULTILINE)
+
+
+def expand_header_dates(markdown):
+    def repl(match):
+        utc = datetime.strptime(match.group(2), "%Y-%m-%d %H:%M").replace(tzinfo=timezone.utc)
+        extra = " | ".join(
+            f"{label}: {loc:%H:%M}" + (f" {(loc.date() - utc.date()).days:+d}d" if loc.date() != utc.date() else "")
+            for label, tz in DATE_TZS for loc in (utc.astimezone(tz),)
+        )
+        return f"{match.group(1)}(UTC: {match.group(2)} | {extra})"
+
+    return HEADER_DATE_RE.sub(repl, markdown)
 
 
 def page_template(title, body):
@@ -107,7 +130,7 @@ def main():
 
     input_path = Path(sys.argv[1])
     output_path = Path(sys.argv[2])
-    markdown = input_path.read_text(encoding="utf-8")
+    markdown = expand_header_dates(input_path.read_text(encoding="utf-8"))
     rendered = render_github_markdown(markdown)
     output_path.write_text(
         page_template(title_from_markdown(markdown), rendered),
