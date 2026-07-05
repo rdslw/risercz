@@ -1,5 +1,10 @@
 # Pipeline self-test: does the publishing plumbing of this repo work?
 
+<!-- AI-GENERATED-NOTE -->
+> [!NOTE]
+> This is an AI-generated research report. All text and code in this report was created by an LLM (Large Language Model). For more information on how these reports are created, see the [main research repository](https://github.com/rdslw/risercz).
+<!-- /AI-GENERATED-NOTE -->
+
 A minimal first research project whose subject is the repository itself. It exists to verify, end to end, that the automation copied from [simonw/research](https://github.com/simonw/research) works on this repo with a `master` default branch.
 
 **Live demo (proves Pages deployment):** https://rdslw.github.io/risercz/pipeline-selftest/demo.html
