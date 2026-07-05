@@ -37,9 +37,13 @@ Steps 1–4 are one-time; 5–7 are the per-research routine.
 3. In that environment, enable [agent internet access](https://developers.openai.com/codex/cloud/internet-access) — it is **off by default** for cloud tasks.
 4. Install the ChatGPT iOS app and sign in (Codex appears in the side menu) and [GitHub mobile app](https://github.com/mobile) for PR review and merging.
 
-5. Per task: app → **Codex** → new task → `rdslw/risercz` + `master` + your environment → paste prompt → submit as a **Code** task; a fresh cloud container clones the repo and works asynchronously.
+5. Per task: app → **Codex** — the tab defaults to pairing with the Codex desktop app; close the "Set up Codex" popup and pick **Cloud threads** from the ⋯ menu (top right), no desktop app needed → new task → `rdslw/risercz` + `master` + your environment → paste prompt → submit as a **Code** task; a fresh cloud container clones the repo and works asynchronously.
 6. Review logs and the diff in the task view, iterate with follow-up messages, then create the PR — paste your prompt as a `>` blockquote plus the Codex task link manually (Codex adds no transcript link).
 7. Merge in the GitHub app; CI publishes. Tip: commenting **`@codex`** on any issue or PR in this repo also launches a task, straight from the GitHub app.
+
+## Iterating: pre-merge vs post-merge
+
+Before merge, every change goes through the agent session: review the diff, send follow-ups, update the PR. Don't commit to the branch from anywhere else — the session's container never syncs external commits (if some land anyway, e.g. accepted review suggestions, tell the next follow-up to fetch the latest branch state first and check its diff for reverts). To try an HTML demo before merge, open the branch copy at `https://raw.githack.com/rdslw/risercz/<branch>/<folder>/demo.html` — Pages only publishes master. After merge the session is done, don't follow it up; every later fix is a fresh task against `master` producing a new small PR on the same folder. Merge often — CI regenerates summaries, index and Pages on every merge.
 
 ## How to construct a prompt
 
