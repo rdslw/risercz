@@ -8,8 +8,6 @@ See [HOWTO.md](HOWTO.md) for the workflow and for how to construct research prom
 
 Prompts and links to session transcripts are included in [the PRs](https://github.com/rdslw/risercz/pulls?q=is%3Apr+is%3Aclosed) that added each report, or in [the commits](https://github.com/rdslw/risercz/commits/master/).
 
-*Times shown are in UTC.*
-
 <!--[[[cog
 import os
 import re
@@ -25,7 +23,8 @@ research_dir = pathlib.Path.cwd()
 subdirs_with_dates = []
 
 for d in research_dir.iterdir():
-    if d.is_dir() and not d.name.startswith('.'):
+    # Skip hidden dirs and the local _site build output (never present in CI)
+    if d.is_dir() and not d.name.startswith('.') and d.name != '_site':
         readme_path = d / "README.md"
         history_path = str(readme_path.relative_to(research_dir))
         # Get the date of the first commit that touched this project's README
