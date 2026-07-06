@@ -1,5 +1,10 @@
 # Rodney and Showboat for research projects
 
+<!-- AI-GENERATED-NOTE -->
+> [!NOTE]
+> This is an AI-generated research report. All text and code in this report was created by an LLM (Large Language Model). For more information on how these reports are created, see the [main research repository](https://github.com/rdslw/risercz).
+<!-- /AI-GENERATED-NOTE -->
+
 ## Scope
 
 This report evaluates two Simon Willison GitHub tools for use in research projects in this repository:

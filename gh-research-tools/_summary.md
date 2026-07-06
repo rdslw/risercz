@@ -1,0 +1,7 @@
+For research workflows requiring both web interaction and reproducible evidence, Rodney and Showboat—two command-line tools from Simon Willison—offer complementary strengths. Rodney ([GitHub](https://github.com/simonw/rodney)) enables persistent browser-driven inspection and extraction from JavaScript-rich or stateful web pages, capturing rendered content, screenshots, accessibility data, and UI workflows that go beyond simple HTML fetches. Showboat ([GitHub](https://github.com/simonw/showboat)) creates executable Markdown transcripts that log commentary, commands, and output side-by-side—making research steps transparent, rerunnable, and easy to verify or review. Integrating Rodney for browser interaction and Showboat for evidence capture transforms ad-hoc investigations into durable, replayable artifacts, enhancing reproducibility and auditability without altering existing folder or note conventions.
+
+**Key Findings:**
+- Rodney provides persistent Chrome session control, DOM extraction, visual evidence capture, accessibility tree inspection, and script-friendly assertion checks.
+- Showboat offers executable Markdown documents, reproducibility verification, code extraction, in-context images, and error-tolerant logging.
+- Using both tools together ensures explorations are browsable, verifiable, and easily reviewed—bridging the gap between loose chat logs and formal proof transcripts.
+- Existing research structures (notes, README, scripts) are complemented rather than replaced, with practical folder layouts and clear guidance for evidence management.
