@@ -27,6 +27,31 @@ This report live-checks browser automation/steering tools that are usable by AI 
   1. **Transactional website steering**: banks, marketplaces, checkout flows, SSO-heavy sites, extensions/passkeys, bot detection, popups, and 2FA.
   2. **API mapping and frontend cloning**: observing network/runtime behavior, extracting hidden API contracts, replaying requests, and later replacing the frontend with a direct integration layer.
 
+
+## Crucial differences between the tools
+
+The tools are similar only at a high level: they all help an agent interact with a browser or browser-like surface. Their critical differences are in **where control happens**, **how much state they inherit**, and **whether they are optimized for doing tasks or understanding the site**.
+
+| Difference | Tools that lean this way | Why it matters |
+|---|---|---|
+| **CLI-first agent steering** | Rodney, agent-browser | Best when an AI coding agent can run shell commands and needs compact, scriptable observations. This favors quick experimentation over managed infrastructure. |
+| **MCP-first tool protocol** | Playwright MCP, Playwriter | Best when the agent host already supports MCP and needs a stable menu of browser tools rather than arbitrary shell commands. |
+| **SDK/application framework** | Stagehand | Best when the team is building a product workflow and wants to mix deterministic code with natural-language fallback. |
+| **Browser infrastructure / hosted sandbox** | Steel Browser | Best when the browser session itself must be provisioned, isolated, reused, or scaled as service infrastructure. |
+| **Runtime instrumentation / reverse engineering** | Wirebrowser | Best when the goal is not just clicking the UI, but discovering how the frontend creates requests, tokens, runtime state, and replayable API calls. |
+| **Real user browser/profile control** | Playwriter | Best when success depends on an existing Chrome profile, cookies, SSO, passkeys, or extensions; riskiest when the account is sensitive. |
+| **Agent-editable low-level harness** | Browser Harness | Best when the page is unusual and the agent needs to create new browser helpers mid-task; requires stronger guardrails because the tool surface can expand. |
+| **Conventional Playwright abstraction** | Playwright MCP, Stagehand | Best for cross-browser maturity and repeatable automation; weaker for websites that specifically resist automation or require a live user profile. |
+
+### The most important trade-offs
+
+1. **Task execution vs site understanding.** Playwriter, agent-browser, Playwright MCP, Rodney, Stagehand, Browser Harness, and Steel Browser primarily help an agent *do things in a browser*. Wirebrowser primarily helps an agent or researcher *understand how the site works internally*.
+2. **Real profile vs sterile profile.** Playwriter's major advantage is access to the user's real Chrome state. That is also its biggest risk. Playwright MCP, Rodney, agent-browser, Stagehand, and Steel Browser are cleaner for reproducibility because they can run in dedicated browser contexts.
+3. **Fixed tool surface vs programmable/self-editing surface.** Playwright MCP gives a standardized set of tools. Browser Harness gives the agent a low-level and mutable harness. The first is easier to audit; the second is better for unusual failures.
+4. **Local ergonomics vs production infrastructure.** Rodney and agent-browser are appealing local CLIs. Stagehand is a developer framework. Steel Browser is the closest to deployable browser infrastructure.
+5. **Browser compatibility vs speed/specialized engines.** Real Chrome is safest for banks, e-commerce, extensions, anti-bot checks, and passkeys. Lightweight engines or cloud sandboxes can be faster and easier to scale, but may diverge from real-user behavior.
+6. **Automation safety posture.** Any tool that can click authenticated sites needs external policy. The risk is highest when using a real user profile or when the agent can execute arbitrary code/snippets; it is lower, but not gone, in isolated Playwright/Chrome contexts.
+
 ## Tools
 
 ### simonw/rodney
@@ -238,6 +263,18 @@ Practical pipeline:
 | 8 | Wirebrowser | Steel Browser |
 
 Wirebrowser ranks low for transactional steering because it is too powerful and instrumentation-focused, not because it is weak. Conversely, Playwright MCP ranks below Wirebrowser for API cloning because its fixed action interface is excellent for steering but not optimized for causality tracing.
+
+
+## Final overall recommendation
+
+If choosing only one or two tools for **both** requested contexts, the best practical pairing is:
+
+1. **Playwriter** as the primary browser-steering tool when real authenticated websites matter. It can use an actual Chrome profile with existing cookies, extensions, SSO, passkeys, and user-visible state. That makes it the strongest single choice for complicated transactional websites, provided it is wrapped in strict human-approval and audit controls.
+2. **Wirebrowser** as the companion tool for API mapping and frontend-cloning work. It is the most directly aligned with discovering runtime JavaScript behavior, generated request payloads, hidden state, token construction, and replayable API calls.
+
+If a real user profile is **not** acceptable or the team needs a more standardized/enterprise-friendly default, substitute **Playwright MCP** for Playwriter. In that variant, the recommended pair becomes **Playwright MCP + Wirebrowser**: Playwright MCP drives repeatable browser flows through a well-known protocol, while Wirebrowser handles deep instrumentation and API discovery.
+
+A single universal winner is not realistic because the two contexts pull in opposite directions: transactional steering wants safe, observable, user-compatible browser control, while API cloning wants powerful inspection and tampering. The closest two-tool answer is therefore **Playwriter + Wirebrowser** for maximum capability, or **Playwright MCP + Wirebrowser** for a more standardized and isolated posture.
 
 ## Source notes
 
