@@ -286,9 +286,28 @@ Run and record it with:
 showboat exec proof.md bash 'uv run scripts/check_source.py'
 ```
 
+## Rodney in sandboxed agent environments (gVisor, OpenAI Codex)
+
+> [!NOTE]
+> **Follow-up addition (2026-07-06).** This section was added after the original report, based on a source-level check of Rodney's launcher code and its author's gVisor investigation notes.
+
+Rodney is not merely compatible with sandboxed agent containers — it was explicitly hardened for them. Its launcher starts Chrome with `--no-sandbox --disable-gpu --single-process` hardcoded, plus `Leakless(false)` to keep Chrome alive between CLI invocations ([main.go#L377-L383](https://github.com/simonw/rodney/blob/a842432246f39775ccb14f0de72565b2c216b5b6/main.go#L377-L383)). The `--single-process` flag carries the comment "Required for screenshots in gVisor/container environments."
+
+The backstory is documented in [notes/gvisor-screenshots](https://github.com/simonw/rodney/blob/a842432246f39775ccb14f0de72565b2c216b5b6/notes/gvisor-screenshots/README.md): under gVisor (the user-space kernel used by agent cloud sandboxes, recognizable by its emulated `Linux 4.4.0` kernel), Chrome's multi-process IPC breaks. Navigation, JS evaluation, and DOM queries worked, but every `Page.captureScreenshot` call crashed Chrome after ~27 seconds and PDF generation failed with `{-32000 Printing failed}`. Of six tested flag combinations, only `--single-process` fixed it (screenshots in 66ms, PDFs in 19ms). That fix is now Rodney's default, so screenshots and PDFs work out of the box where stock Playwright/Puppeteer configurations typically fail.
+
+**Running Rodney in an OpenAI Codex cloud environment:**
+
+1. **Install Chrome in the setup script** (which runs while network is still available) — the `codex-universal` image does not ship it. Either `apt-get install -y chromium` and set `ROD_CHROME_BIN=/usr/bin/chromium`, or trigger `rodney start` once during setup so rod's launcher downloads its managed Chromium.
+2. **Network policy decides what you can browse.** Codex cloud disables internet after setup by default. Chrome talking to `localhost` always works — so "serve an HTML demo with `python -m http.server`, then run `rodney assert`/`screenshot` against `127.0.0.1`" works fully offline. Browsing the public web requires enabling internet access (allowlisted domains or full) for that Codex environment.
+3. **The persistent-Chrome model fits a task's lifetime.** Chrome outlives each CLI call and is torn down with the task container.
+
+**Codex CLI (local)** is similar but the constraint moves to the sandbox config: the default Landlock/seccomp (Linux) or Seatbelt (macOS) sandbox blocks network, so Chrome cannot fetch external pages until network access is enabled (`network_access = true` under workspace-write) or commands are approved with escalation. Localhost-only testing works in the default posture.
+
+*Caveat: the Codex platform details above (setup-script network window, default-off internet) reflect its documented behavior as of early-to-mid 2026 — re-check current OpenAI docs before wiring this into an environment definition.*
+
 ## Practical cautions
 
-- Rodney depends on Chrome or Chromium being installed and reachable, or `ROD_CHROME_BIN` being set.
+- Rodney depends on Chrome or Chromium being installed and reachable, or `ROD_CHROME_BIN` being set. *(2026-07-06 remark: for container/Codex specifics see [Rodney in sandboxed agent environments](#rodney-in-sandboxed-agent-environments-gvisor-openai-codex) above.)*
 - Browser sessions may include cookies or local state; use `--local` and keep `.rodney/` out of git.
 - Showboat verification is strongest for deterministic commands. Network calls, timestamps, changing GitHub star counts, and live webpages may drift; mark those as live observations or avoid verifying them directly.
 - Keep binary artifacts small and purposeful. Prefer text extracts, scripts, and diffs over full fetched repositories.
@@ -304,3 +323,4 @@ Use Rodney when research needs a real browser. Use Showboat when research needs 
 - `https://raw.githubusercontent.com/simonw/rodney/main/README.md` on 2026-07-05. Key README claims checked: persistent headless Chrome CLI, same long-running Chrome process, start/open/js/stop architecture, Chrome/Chromium requirement, extraction commands, waits, and screenshots.
 - `https://raw.githubusercontent.com/simonw/showboat/main/README.md` on 2026-07-05. Key README claims checked: executable demo documents, commentary plus code/output, `init`, `note`, `exec`, `image`, `pop`, `verify`, and `extract` commands.
 - GitHub repository pages for `simonw/rodney`, `simonw/showboat`, and `simonw/research` on 2026-07-05.
+- *(Added 2026-07-06 with the sandbox section)* `simonw/rodney` source at commit `a842432`: [`main.go`](https://github.com/simonw/rodney/blob/a842432246f39775ccb14f0de72565b2c216b5b6/main.go) launcher flags and [`notes/gvisor-screenshots/README.md`](https://github.com/simonw/rodney/blob/a842432246f39775ccb14f0de72565b2c216b5b6/notes/gvisor-screenshots/README.md) gVisor investigation.
