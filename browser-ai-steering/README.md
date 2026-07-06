@@ -1,5 +1,10 @@
 # browser-ai-steering
 
+<!-- AI-GENERATED-NOTE -->
+> [!NOTE]
+> This is an AI-generated research report. All text and code in this report was created by an LLM (Large Language Model). For more information on how these reports are created, see the [main research repository](https://github.com/rdslw/risercz).
+<!-- /AI-GENERATED-NOTE -->
+
 Research date: 2026-07-06.
 
 This report live-checks browser automation/steering tools that are usable by AI agents. It focuses on tools that expose a browser as an agent-operable surface rather than only a conventional test framework.

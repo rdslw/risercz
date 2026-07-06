@@ -183,7 +183,18 @@ for dirname, _ in subdirs_with_dates:
             readme_path.write_text('\n'.join(new_lines))
 
 ]]]-->
-## 3 research projects
+## 4 research projects
+
+### [browser-ai-steering](https://github.com/rdslw/risercz/tree/master/browser-ai-steering#readme) (2026-07-06 22:03)
+
+Browser AI steering tools are rapidly evolving to meet the needs of AI agents that must interact with modern websites in both transactional (e.g., banking, e-commerce) and exploratory (API mapping, frontend cloning) contexts. The landscape now balances agent ergonomics, browser fidelity, security posture, and inspection power: tools like [Playwriter](https://github.com/remorses/playwriter) excel at leveraging a real user’s Chrome session for SSO- and extension-dependent flows, while [Wirebrowser](https://github.com/fcavallarin/wirebrowser) specializes in runtime JavaScript and API reverse-engineering. Highly agent-friendly CLIs such as [agent-browser](https://github.com/vercel-labs/agent-browser) and scriptable harnesses like Browser Harness offer flexibility for coding agents, whereas infrastructure-oriented solutions like Steel Browser supply session lifecycle and scaling. The dominant trade-offs are between reproducibility/safety (sterile browser environments with fixed toolsets) and maximum capability (direct access to real user sessions and low-level runtime introspection).
+
+Key Findings:
+- **Playwriter + Wirebrowser** is the strongest pairing for maximum capability across both transactional steering and API mapping, provided strict security controls are enforced.
+- **Playwright MCP + Wirebrowser** is recommended for enterprise environments that require standardized, isolated browser automation.
+- Tools split into those optimized for execution (agent control, repeatability) versus those optimized for understanding (runtime instrumentation, API causality), so combining both is often necessary.
+- All tools handling sensitive accounts require human-in-the-loop approval, audit logging, and isolated/dedicated browser profiles for safe use.
+- For complex web automation, no single tool covers the full spectrum—purpose-built combinations outperform one-size-fits-all solutions.
 
 ### [Rodney and Showboat for research projects](https://github.com/rdslw/risercz/tree/master/rodney-showboat-patterns#readme) (2026-07-06 20:32)
 
