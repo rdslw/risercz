@@ -7,7 +7,7 @@ How to run research projects in this repo. Agent-facing instructions live in [AG
 1. **Think of a question** — best if it has an empirically checkable answer (benchmark, "does X do Y?", "is X safe against Y?", "can X be built?").
 2. **Launch an async agent** against `rdslw/risercz`:
    - **Claude**: Claude app / [claude.ai/code](https://claude.ai/code) → new session on this repo, in an environment with network access enabled → paste prompt.
-   - **Codex**: ChatGPT app → Codex → this repo, environment with internet access on → paste prompt.
+   - **Codex**: ChatGPT app or [chatgpt.com/codex](https://chatgpt.com/codex) in a desktop browser → this repo, environment with internet access on → paste prompt. Also launchable from a shell via `gh` or `codex cloud exec` — see [Launching Codex from a desktop browser or shell](#launching-codex-from-a-desktop-browser-or-shell).
 3. **Walk away.** The agent follows AGENTS.md: creates a folder, keeps `notes.md` as it works, writes a `README.md` report, and pushes a branch.
 4. **Review the diff** (in the agent's session or the GitHub app): read the report's README first, skim `notes.md` for the trail. If wrong or incomplete, send follow-up prompts to the same session; when satisfied, create the PR from the session.
 5. **Keep provenance in the PR description**: the original prompt as a `>` blockquote plus a link to the session transcript. Claude Code adds `Claude-Session:` links automatically; paste the Codex task link manually.
@@ -39,7 +39,31 @@ Steps 1–4 are one-time; 5–7 are the per-research routine.
 
 5. Per task: app → **Codex** — the tab defaults to pairing with the Codex desktop app; close the "Set up Codex" popup and pick **Cloud threads** from the ⋯ menu (top right), no desktop app needed → new task → `rdslw/risercz` + `master` + your environment → paste prompt → submit as a **Code** task; a fresh cloud container clones the repo and works asynchronously.
 6. Review logs and the diff in the task view, iterate with follow-up messages, then create the PR — paste your prompt as a `>` blockquote plus the Codex task link manually (Codex adds no transcript link).
-7. Merge in the GitHub app; CI publishes. Tip: commenting **`@codex`** on any issue or PR in this repo also launches a task, straight from the GitHub app.
+7. Merge in the GitHub app; CI publishes. Tip: commenting **`@codex`** on any issue or PR in this repo also launches a task, straight from the GitHub app (same mechanism as the `gh` variant below).
+
+## Launching Codex from a desktop browser or shell
+
+The phone flow above is not the only entry point; the same cloud tasks can be started three other ways (setup steps 1–3 of the Codex section still apply):
+
+- **Desktop browser** — [chatgpt.com/codex](https://chatgpt.com/codex) is the full cloud interface: new task → `rdslw/risercz` @ `master` + your environment → paste prompt → submit as a **Code** task. Monitoring, follow-ups, diff review and PR creation all happen in the same task view as on the phone. Requires ChatGPT subscription login (API-key auth doesn't unlock cloud features).
+- **`gh` variant (shell)** — any non-`review` **`@codex`** mention on an issue or PR starts a cloud task with that issue/PR as context:
+
+  ```bash
+  gh issue create --repo rdslw/risercz \
+    --title "research: <short question>" \
+    --body "@codex <prompt, per 'How to construct a prompt' below>"
+  ```
+
+  Codex reacts with 👀, runs in the cloud, and opens a PR. Known quirk as of mid-2026: non-review `@codex` issue comments occasionally reply "create an environment for this repo" even when one exists ([openai/codex#20093](https://github.com/openai/codex/issues/20093)) — retry or fall back to another launch path.
+- **`codex cloud exec` variant (shell)** — the Codex CLI submits cloud tasks directly (experimental subcommand):
+
+  ```bash
+  codex cloud exec --env ENV_ID "<prompt>" --attempts 3   # --attempts 1-4 = best-of-N
+  codex cloud list --json                                  # monitor from scripts
+  codex apply TASK_ID                                      # pull a task's diff into the local tree
+  ```
+
+  It exits non-zero on submission failure, so it scripts cleanly. Environment IDs are opaque and only discoverable via the interactive `codex cloud` picker (Ctrl+O) or the web dashboard — copy yours once and keep it handy.
 
 ## Iterating: pre-merge vs post-merge
 
