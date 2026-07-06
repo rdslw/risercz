@@ -185,7 +185,7 @@ for dirname, _ in subdirs_with_dates:
 ]]]-->
 ## 3 research projects
 
-### [Rodney and Showboat for research projects](https://github.com/rdslw/risercz/tree/master/gh-research-tools#readme) (2026-07-06 20:15)
+### [Rodney and Showboat for research projects](https://github.com/rdslw/risercz/tree/master/rodney-showboat-patterns#readme) (2026-07-06 20:32)
 
 For research workflows requiring both web interaction and reproducible evidence, Rodney and Showboat—two command-line tools from Simon Willison—offer complementary strengths. Rodney ([GitHub](https://github.com/simonw/rodney)) enables persistent browser-driven inspection and extraction from JavaScript-rich or stateful web pages, capturing rendered content, screenshots, accessibility data, and UI workflows that go beyond simple HTML fetches. Showboat ([GitHub](https://github.com/simonw/showboat)) creates executable Markdown transcripts that log commentary, commands, and output side-by-side—making research steps transparent, rerunnable, and easy to verify or review. Integrating Rodney for browser interaction and Showboat for evidence capture transforms ad-hoc investigations into durable, replayable artifacts, enhancing reproducibility and auditability without altering existing folder or note conventions.
 
