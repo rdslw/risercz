@@ -1,0 +1,17 @@
+DOCX python_pl.docx paragraphs=10 tables=2
+  P1: Acme Cloud Platform P&L FY2026
+  P2: Scenario: Board-ready operating plan with revenue, COGS, opex, EBITDA, risks, and sales/PM actions.
+  P3: Executive summary
+  P4: Revenue grows from $12.0M to $17.7M on enterprise expansion and partner attach.
+  P5: Gross margin improves from 68.0% to 73.0% after support automation and hosting optimization.
+  T1 rows=8 cols=6 first=[Metric Q1 Q2 Q3 Q4 FY]
+  T2 rows=4 cols=3 first=[Risk Impact Mitigation]
+DOCX go_pl.docx paragraphs=3 tables=1
+  P1: Acme Cloud Platform P&L FY2026
+  P2: Executive summary: revenue expands, gross margin improves, EBITDA turns positive by Q4.
+  P3: Risk register: enterprise slips, cloud inflation, feature churn; mitigations are commit gates, reserved capacity, and PM conversion scorecards.
+  T1 rows=8 cols=6 first=[Metric Q1 Q2 Q3 Q4 FY]
+XLSX python_pl.xlsx sheets=1 tables=0
+  Sheet P&L max=11x6 A1="Metric" F9=""
+XLSX go_pl.xlsx sheets=1 tables=1
+  Sheet P&L max=11x6 A1="Column1" F9=""

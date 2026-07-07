@@ -1,0 +1,502 @@
+{
+  "go_pl.docx": {
+    "read_json": {
+      "file": "go_pl.docx",
+      "paragraphs": [
+        {
+          "text": "Acme Cloud Platform P&L FY2026",
+          "style": "Normal"
+        },
+        {
+          "text": "Executive summary: revenue expands, gross margin improves, EBITDA turns positive by Q4.",
+          "style": "Normal"
+        },
+        {
+          "text": "Risk register: enterprise slips, cloud inflation, feature churn; mitigations are commit gates, reserved capacity, and PM conversion scorecards.",
+          "style": "Normal"
+        }
+      ],
+      "headings": [],
+      "tables": [
+        [
+          [
+            "Metric",
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "FY"
+          ],
+          [
+            "Revenue",
+            "12000000",
+            "13800000",
+            "15500000",
+            "17700000",
+            "59000000"
+          ],
+          [
+            "COGS",
+            "-3840000",
+            "-3864000",
+            "-4185000",
+            "-4779000",
+            "-16668000"
+          ],
+          [
+            "Gross Profit",
+            "8160000",
+            "9936000",
+            "11315000",
+            "12921000",
+            "42332000"
+          ],
+          [
+            "Sales & Marketing",
+            "-4800000",
+            "-5100000",
+            "-5350000",
+            "-5700000",
+            "-20950000"
+          ],
+          [
+            "Product & Engineering",
+            "-3500000",
+            "-3600000",
+            "-3700000",
+            "-3850000",
+            "-14650000"
+          ],
+          [
+            "G&A",
+            "-1300000",
+            "-1350000",
+            "-1400000",
+            "-1420000",
+            "-5470000"
+          ],
+          [
+            "EBITDA",
+            "-1440000",
+            "-114000",
+            "865000",
+            "1951000",
+            "1262000"
+          ]
+        ]
+      ],
+      "paragraph_count": 3,
+      "table_count": 1
+    },
+    "read_markdown": "Acme Cloud Platform P&L FY2026\n\nExecutive summary: revenue expands, gross margin improves, EBITDA turns positive by Q4.\n\nRisk register: enterprise slips, cloud inflation, feature churn; mitigations are commit gates, reserved capacity, and PM conversion scorecards.\n\n| Metric | Q1 | Q2 | Q3 | Q4 | FY |\n| --- | --- | --- | --- | --- | --- |\n| Revenue | 12000000 | 13800000 | 15500000 | 17700000 | 59000000 |\n| COGS | -3840000 | -3864000 | -4185000 | -4779000 | -16668000 |\n| Gross Profit | 8160000 | 9936000 | 11315000 | 12921000 | 42332000 |\n| Sales & Marketing | -4800000 | -5100000 | -5350000 | -5700000 | -20950000 |\n| Product & Engineering | -3500000 | -3600000 | -3700000 | -3850000 | -14650000 |\n| G&A | -1300000 | -1350000 | -1400000 | -1420000 | -5470000 |\n| EBITDA | -1440000 | -114000 | 865000 | 1951000 | 1262000 |\n",
+    "inspect": {
+      "sections": [],
+      "count": 0,
+      "file": "/workspace/risercz/office-mcp-ooxml/artifacts/go_pl.docx",
+      "next_tools": [
+        "word_get_section_guidance",
+        "word_get_section",
+        "word_patch_section",
+        "word_list_anchors",
+        "word_insert_at_anchor",
+        "word_document_map"
+      ]
+    }
+  },
+  "go_pl.xlsx": {
+    "read_json": {
+      "file": "go_pl.xlsx",
+      "sheets": {
+        "P&L": [
+          [
+            "Column1",
+            "Column2",
+            "Column3",
+            "Column4",
+            "Column5",
+            "Column6"
+          ],
+          [
+            "Revenue",
+            "12000000",
+            "13800000",
+            "15500000",
+            "17700000",
+            "59000000"
+          ],
+          [
+            "COGS",
+            "-3840000",
+            "-3864000",
+            "-4185000",
+            "-4779000",
+            "-16668000"
+          ],
+          [
+            "Gross Profit",
+            "8160000",
+            "9936000",
+            "11315000",
+            "12921000",
+            "42332000"
+          ],
+          [
+            "Sales & Marketing",
+            "-4800000",
+            "-5100000",
+            "-5350000",
+            "-5700000",
+            "-20950000"
+          ],
+          [
+            "Product & Engineering",
+            "-3500000",
+            "-3600000",
+            "-3700000",
+            "-3850000",
+            "-14650000"
+          ],
+          [
+            "G&A",
+            "-1300000",
+            "-1350000",
+            "-1400000",
+            "-1420000",
+            "-5470000"
+          ],
+          [
+            "EBITDA",
+            "-1440000",
+            "-114000",
+            "865000",
+            "1951000",
+            "1262000"
+          ],
+          [
+            "PM/Sales action",
+            "Prioritize expansion play + support automation before Q3.",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    "read_markdown": "## P&L\n\n| Column1 | Column2 | Column3 | Column4 | Column5 | Column6 |\n| --- | --- | --- | --- | --- | --- |\n| Revenue | 12000000 | 13800000 | 15500000 | 17700000 | 59000000 |\n| COGS | -3840000 | -3864000 | -4185000 | -4779000 | -16668000 |\n| Gross Profit | 8160000 | 9936000 | 11315000 | 12921000 | 42332000 |\n| Sales & Marketing | -4800000 | -5100000 | -5350000 | -5700000 | -20950000 |\n| Product & Engineering | -3500000 | -3600000 | -3700000 | -3850000 | -14650000 |\n| G&A | -1300000 | -1350000 | -1400000 | -1420000 | -5470000 |\n| EBITDA | -1440000 | -114000 | 865000 | 1951000 | 1262000 |\n| PM/Sales action | Prioritize expansion play + support automation before Q3. |  |  |  |  |\n",
+    "inspect": {
+      "file": "go_pl.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "name": "P&L",
+          "state": "visible",
+          "dimensions": "A1:F11",
+          "tables": [
+            "PLTable"
+          ],
+          "has_data_validations": false,
+          "merged_cell_count": 0
+        }
+      ],
+      "has_vba": false
+    }
+  },
+  "python_pl.docx": {
+    "read_json": {
+      "file": "python_pl.docx",
+      "paragraphs": [
+        {
+          "text": "Acme Cloud Platform P&L FY2026",
+          "style": "Title"
+        },
+        {
+          "text": "Scenario: Board-ready operating plan with revenue, COGS, opex, EBITDA, risks, and sales/PM actions.",
+          "style": "Normal"
+        },
+        {
+          "text": "Executive summary",
+          "style": "Heading 1"
+        },
+        {
+          "text": "Revenue grows from $12.0M to $17.7M on enterprise expansion and partner attach.",
+          "style": "List Bullet"
+        },
+        {
+          "text": "Gross margin improves from 68.0% to 73.0% after support automation and hosting optimization.",
+          "style": "List Bullet"
+        },
+        {
+          "text": "EBITDA turns from -$1.4M in Q1 to $2.0M in Q4 while preserving PM discovery capacity.",
+          "style": "List Bullet"
+        },
+        {
+          "text": "Quarterly P&L",
+          "style": "Heading 1"
+        },
+        {
+          "text": "Commentary",
+          "style": "Heading 1"
+        },
+        {
+          "text": "Sales should prioritize expansion SKUs with payback under 12 months; PM should protect roadmap items that lift attach and reduce support load.",
+          "style": "Normal"
+        },
+        {
+          "text": "Risk register",
+          "style": "Heading 1"
+        }
+      ],
+      "headings": [
+        {
+          "level": 1,
+          "text": "Executive summary"
+        },
+        {
+          "level": 1,
+          "text": "Quarterly P&L"
+        },
+        {
+          "level": 1,
+          "text": "Commentary"
+        },
+        {
+          "level": 1,
+          "text": "Risk register"
+        }
+      ],
+      "tables": [
+        [
+          [
+            "Metric",
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "FY"
+          ],
+          [
+            "Revenue",
+            "12000000",
+            "13800000",
+            "15500000",
+            "17700000",
+            "59000000"
+          ],
+          [
+            "COGS",
+            "-3840000",
+            "-3864000",
+            "-4185000",
+            "-4779000",
+            "-16668000"
+          ],
+          [
+            "Gross Profit",
+            "8160000",
+            "9936000",
+            "11315000",
+            "12921000",
+            "42332000"
+          ],
+          [
+            "Sales & Marketing",
+            "-4800000",
+            "-5100000",
+            "-5350000",
+            "-5700000",
+            "-20950000"
+          ],
+          [
+            "Product & Engineering",
+            "-3500000",
+            "-3600000",
+            "-3700000",
+            "-3850000",
+            "-14650000"
+          ],
+          [
+            "G&A",
+            "-1300000",
+            "-1350000",
+            "-1400000",
+            "-1420000",
+            "-5470000"
+          ],
+          [
+            "EBITDA",
+            "-1440000",
+            "-114000",
+            "865000",
+            "1951000",
+            "1262000"
+          ]
+        ],
+        [
+          [
+            "Risk",
+            "Impact",
+            "Mitigation"
+          ],
+          [
+            "Enterprise slips",
+            "-$1.8M revenue",
+            "Stage-gate late-quarter commits"
+          ],
+          [
+            "Cloud inflation",
+            "-220 bps GM",
+            "Reserved capacity + workload rightsizing"
+          ],
+          [
+            "Feature churn",
+            "Delayed attach",
+            "PM scorecard tied to conversion"
+          ]
+        ]
+      ],
+      "paragraph_count": 10,
+      "table_count": 2
+    },
+    "read_markdown": "Acme Cloud Platform P&L FY2026\n\nScenario: Board-ready operating plan with revenue, COGS, opex, EBITDA, risks, and sales/PM actions.\n\n# Executive summary\n\n- Revenue grows from $12.0M to $17.7M on enterprise expansion and partner attach.\n\n- Gross margin improves from 68.0% to 73.0% after support automation and hosting optimization.\n\n- EBITDA turns from -$1.4M in Q1 to $2.0M in Q4 while preserving PM discovery capacity.\n\n# Quarterly P&L\n\n# Commentary\n\nSales should prioritize expansion SKUs with payback under 12 months; PM should protect roadmap items that lift attach and reduce support load.\n\n# Risk register\n\n| Metric | Q1 | Q2 | Q3 | Q4 | FY |\n| --- | --- | --- | --- | --- | --- |\n| Revenue | 12000000 | 13800000 | 15500000 | 17700000 | 59000000 |\n| COGS | -3840000 | -3864000 | -4185000 | -4779000 | -16668000 |\n| Gross Profit | 8160000 | 9936000 | 11315000 | 12921000 | 42332000 |\n| Sales & Marketing | -4800000 | -5100000 | -5350000 | -5700000 | -20950000 |\n| Product & Engineering | -3500000 | -3600000 | -3700000 | -3850000 | -14650000 |\n| G&A | -1300000 | -1350000 | -1400000 | -1420000 | -5470000 |\n| EBITDA | -1440000 | -114000 | 865000 | 1951000 | 1262000 |\n\n| Risk | Impact | Mitigation |\n| --- | --- | --- |\n| Enterprise slips | -$1.8M revenue | Stage-gate late-quarter commits |\n| Cloud inflation | -220 bps GM | Reserved capacity + workload rightsizing |\n| Feature churn | Delayed attach | PM scorecard tied to conversion |\n",
+    "inspect": {
+      "sections": [
+        {
+          "title": "Executive summary",
+          "level": 1,
+          "style": "Heading 1"
+        },
+        {
+          "title": "Quarterly P&L",
+          "level": 1,
+          "style": "Heading 1"
+        },
+        {
+          "title": "Commentary",
+          "level": 1,
+          "style": "Heading 1"
+        },
+        {
+          "title": "Risk register",
+          "level": 1,
+          "style": "Heading 1"
+        }
+      ],
+      "count": 4,
+      "file": "/workspace/risercz/office-mcp-ooxml/artifacts/python_pl.docx",
+      "next_tools": [
+        "word_get_section_guidance",
+        "word_get_section",
+        "word_patch_section",
+        "word_list_anchors",
+        "word_insert_at_anchor",
+        "word_document_map"
+      ]
+    }
+  },
+  "python_pl.xlsx": {
+    "read_json": {
+      "file": "python_pl.xlsx",
+      "sheets": {
+        "P&L": [
+          [
+            "Metric",
+            "Q1",
+            "Q2",
+            "Q3",
+            "Q4",
+            "FY"
+          ],
+          [
+            "Revenue",
+            "12000000",
+            "13800000",
+            "15500000",
+            "17700000",
+            ""
+          ],
+          [
+            "COGS",
+            "-3840000",
+            "-3864000",
+            "-4185000",
+            "-4779000",
+            ""
+          ],
+          [
+            "Gross Profit",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Gross Margin",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "Sales & Marketing",
+            "-4800000",
+            "-5100000",
+            "-5350000",
+            "-5700000",
+            ""
+          ],
+          [
+            "Product & Engineering",
+            "-3500000",
+            "-3600000",
+            "-3700000",
+            "-3850000",
+            ""
+          ],
+          [
+            "G&A",
+            "-1300000",
+            "-1350000",
+            "-1400000",
+            "-1420000",
+            ""
+          ],
+          [
+            "EBITDA",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          [
+            "PM/Sales action",
+            "Prioritize expansion play + support automation before Q3.",
+            "",
+            "",
+            "",
+            ""
+          ]
+        ]
+      }
+    },
+    "read_markdown": "## P&L\n\n| Metric | Q1 | Q2 | Q3 | Q4 | FY |\n| --- | --- | --- | --- | --- | --- |\n| Revenue | 12000000 | 13800000 | 15500000 | 17700000 |  |\n| COGS | -3840000 | -3864000 | -4185000 | -4779000 |  |\n| Gross Profit |  |  |  |  |  |\n| Gross Margin |  |  |  |  |  |\n| Sales & Marketing | -4800000 | -5100000 | -5350000 | -5700000 |  |\n| Product & Engineering | -3500000 | -3600000 | -3700000 | -3850000 |  |\n| G&A | -1300000 | -1350000 | -1400000 | -1420000 |  |\n| EBITDA |  |  |  |  |  |\n| PM/Sales action | Prioritize expansion play + support automation before Q3. |  |  |  |  |\n",
+    "inspect": {
+      "file": "python_pl.xlsx",
+      "sheet_count": 1,
+      "sheets": [
+        {
+          "name": "P&L",
+          "state": "visible",
+          "dimensions": "A1:F11",
+          "tables": [],
+          "has_data_validations": false,
+          "merged_cell_count": 0
+        }
+      ],
+      "has_vba": false
+    }
+  }
+}
