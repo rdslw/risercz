@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"github.com/rcarmo/go-ooxml/pkg/document"
 	"github.com/rcarmo/go-ooxml/pkg/spreadsheet"
-	"log"
 	"path/filepath"
 )
 
@@ -44,8 +43,5 @@ func main() {
 	}
 	for _, n := range []string{"python_pl.xlsx", "go_pl.xlsx"} {
 		xlsx(filepath.Join(base, n))
-	}
-	if false {
-		log.Fatal()
 	}
 }

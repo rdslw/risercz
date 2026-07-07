@@ -178,3 +178,4 @@ Reasons:
 - I did not use Microsoft Word or Excel GUI repair validation.
 - The Go spreadsheet test failure depended on missing fixture files in this environment.
 - The Python project's README explicitly frames it as stable but not actively supported, which is a governance risk for production adoption.
+- The probe scripts (`analyze_cross.py`, `llm_workflow_probe.py`) and `go.mod` reference the tool checkouts at `/tmp/office-mcp-ooxml-work/`. They are not self-contained: to re-run them, clone `rcarmo/python-office-mcp-server` and `rcarmo/go-ooxml` to that path first, then install the Python package in a venv. The committed JSON/text output files capture the results of each run.
