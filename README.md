@@ -183,7 +183,16 @@ for dirname, _ in subdirs_with_dates:
             readme_path.write_text('\n'.join(new_lines))
 
 ]]]-->
-## 4 research projects
+## 5 research projects
+
+### [python-office-mcp-server vs go-ooxml for Office P&L workflows](https://github.com/rdslw/risercz/tree/master/office-mcp-ooxml#readme) (2026-07-07 22:22)
+
+For business workflows involving frequent Word and Excel document creation and analysis, [python-office-mcp-server](https://github.com/rcarmo/python-office-mcp-server) proved much more ergonomic and feature-rich than [go-ooxml](https://github.com/rcarmo/go-ooxml). The Python tool, leveraging mature libraries, enables rapid generation of polished P&L reports, delivers rich document inspection features (including Markdown/JSON outputs for LLMs), and offers agent-oriented abstractions for workflows such as patching, commenting, and auditing. In contrast, go-ooxml’s lower-level API works for basic OOXML tasks but requires substantial custom coding to match the business-level utility of the Python-based option—especially for LLM enablement or user-facing automation. Governance and open-source health for both tools are early-stage, but python-office-mcp-server is more recently active and better suited for immediate, practical use in a tech sales/PM environment, pending license clarity.
+
+Key findings:
+- **python-office-mcp-server** excels at workflow-level tasks, returns LLM-friendly outputs, and is productive for non-developers; it has more contributors/stars, though a missing license must be addressed.
+- **go-ooxml** is viable for Go-centric platforms but is not as ergonomic or mature for business document tasks; it has a permissive license but is less active and single-author.
+- Either tool should be treated as a prototype or internal toolkit rather than a supported product; neither is suitable for immediate production use without additional evaluation and governance.
 
 ### [browser-ai-steering](https://github.com/rdslw/risercz/tree/master/browser-ai-steering#readme) (2026-07-06 22:03)
 
