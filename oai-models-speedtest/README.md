@@ -8,7 +8,7 @@ A self-contained browser benchmark for OpenAI Responses API streaming calls. Ope
 
 1. Enter an OpenAI API key. Use **Save key to browser** if you want to retain it in browser `localStorage`; the clear saved/available state confirms what is stored. The key is only sent in the Authorization header to `https://api.openai.com` when a run begins.
 2. Select 1–5 tries per model/mode, a total budget, an approximate generated input size (10K–100K tokens), and requested output tokens (2K–20K). The input prompt uses repeated one-thousand-token lorem-ipsum blocks; hover its ⓘ marker to see the leading instruction. The output instruction requests repeatable diceware-style word blocks: 1,000 random words, one per line, plus a counter every 100 words for each 2K requested output tokens. Hover the output ⓘ marker to preview it. The API receives the selected requested output value plus one as `max_output_tokens`.
-3. Review each row’s expected maximum cost and the total. The Run button is disabled, and expected-cost cells turn red, when the selected rows’ maximum cost is above the budget.
+3. Review each row’s expected maximum cost, total cost, and total sequential time in minutes. The Run button is disabled, and expected-cost cells turn red, when the selected rows’ maximum cost is above the budget.
 4. Runs shuffle the model/mode attempts. Normal mode uses `service_tier: "auto"`; FAST uses `service_tier: "priority"`. Unavailable models/tier combinations are recorded as failures—nothing is substituted.
 
 ## Prices
