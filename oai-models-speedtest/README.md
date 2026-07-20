@@ -24,9 +24,9 @@ Expected maximum cost is `tries × (selected input tokens × input price + (requ
 - **Tokens/sec** is returned output tokens divided by the time from first text delta to stream completion. If a terminal usage event is unavailable, the page uses a character-count fallback. The result table’s input/output-token columns are medians of API-reported usage (or the same explicit fallback), not selected workload estimates.
 - HTTP 429 responses retry up to twice with exponential backoff. Retry timers are reset for every attempt, avoiding backoff time in the subsequent measurement.
 
-## Export
+## Results clipboard
 
-Use **Download results as Markdown** above the results card to save the completed aggregate table, including actual average input/output usage and timing metrics.
+Use **Copy results to clipboard** above the results card to copy a Markdown table of the completed aggregate results, including actual average input/output usage and timing metrics. A green confirmation is shown for two seconds after a successful copy.
 
 ## Content Security Policy
 

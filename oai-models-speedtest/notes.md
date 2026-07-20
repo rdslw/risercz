@@ -18,3 +18,4 @@
 - Refined output semantics: the selected requested output is now an explicit generated-output target, while the API `max_output_tokens` is set to twice that target for headroom; expected maximum cost uses that API cap.
 - Updated the workload to use repeatable diceware-word output blocks: one 1,000-word, one-word-per-line block per 2K requested output tokens, with deterministic counter-line instructions every 100 words.
 - Made prompt-preview markers inline with their labels and added a total sequential-time estimate in minutes beside the expected total cost.
+- Replaced Markdown download with clipboard copy and a temporary success confirmation, with an in-page copy fallback for browsers that do not expose the Clipboard API.
