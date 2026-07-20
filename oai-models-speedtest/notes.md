@@ -15,3 +15,4 @@
 - Follow-up: added a hash-based CSP before the inline script. The script hash is generated from the script block only, so it is not circular with the CSP meta element that carries it; the hash must be regenerated when the script changes.
 - Updated the setup UI with explicit key saving/status, range sliders for 1–20 tries and generated 10K–100K input/2K–20K output workloads, expected row costs, and a pre-run budget disable guard.
 - Retrieved `https://raw.githubusercontent.com/simonw/llm-prices/main/data/openai.json` to set normal-mode defaults for all six requested models. FAST rows use the published 2× priority-processing rate.
+- Refined output semantics: the selected requested output is now an explicit generated-output target, while the API `max_output_tokens` is set to twice that target for headroom; expected maximum cost uses that API cap.
