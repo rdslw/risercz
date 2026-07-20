@@ -7,7 +7,7 @@ A self-contained browser benchmark for OpenAI Responses API streaming calls. Ope
 ## Run setup
 
 1. Enter an OpenAI API key. Use **Save key to browser** if you want to retain it in browser `localStorage`; the clear saved/available state confirms what is stored. The key is only sent in the Authorization header to `https://api.openai.com` when a run begins.
-2. Select 1–5 tries per model/mode, a total budget, an approximate generated input size (10K–100K tokens), and requested output tokens (2K–20K). The input prompt uses repeated one-thousand-token lorem-ipsum blocks; hover its ⓘ marker to see the leading instruction. The output instruction requests repeatable diceware-style word blocks: 1,000 random words, one per line, plus a counter every 100 words for each 2K requested output tokens. Hover the output ⓘ marker to preview it. The API receives the selected requested output value plus one as `max_output_tokens`.
+2. Select 1–5 tries per model/mode, a total budget, an approximate generated input size (10K–100K tokens), and requested output tokens (2K–20K). The input prompt uses repeated one-thousand-token lorem-ipsum blocks; hover its ⓘ marker to see the leading instruction. The output instruction requests repeatable diceware-style word blocks: 1,000 random words, one per line, plus a counter every 100 words for each 2K requested output tokens. Hover the output ⓘ marker to preview it. The API receives twice the selected requested output value as `max_output_tokens`. Every benchmark request also starts with a unique five-word sentence to avoid reusing a cacheable leading prompt prefix.
 3. Review each row’s expected maximum cost, total cost, and total sequential time in minutes. The Run button is disabled, and expected-cost cells turn red, when the selected rows’ maximum cost is above the budget.
 4. Runs shuffle the model/mode attempts. Normal mode uses `service_tier: "auto"`; FAST uses `service_tier: "priority"`. Unavailable models/tier combinations are recorded as failures—nothing is substituted.
 
@@ -15,7 +15,7 @@ A self-contained browser benchmark for OpenAI Responses API streaming calls. Ope
 
 The twelve default rows retain the requested six model names. Normal-mode input/output prices are taken from the current [`data/openai.json` in Simon Willison’s llm-prices repository](https://github.com/simonw/llm-prices/blob/main/data/openai.json), retrieved during this update: `gpt-5.6-sol` $5/$30, `gpt-5.6-terra` $2.50/$15, `gpt-5.6-luna` $1/$6, `gpt-5.4` $2.50/$15, `gpt-5.4-mini` $0.75/$4.50, and `gpt-5.4-nano` $0.20/$1.25 per million input/output tokens. FAST rows use the published priority-processing 2× rate. All displayed rates are editable because model availability and pricing can change.
 
-Expected maximum cost is `tries × (selected input tokens × input price + (requested output tokens + 1) × output price) / 1,000,000`, reflecting the API output cap and budget guard. Each table row’s **Naive time bound** is `tries × (4 seconds fixed prefill + input tokens / 5,000 tokens/second + (requested output tokens + 1) / 100 tokens/second)`. Its ⓘ marker exposes the same equation. This is a coarse sequential planning bound, not a latency prediction. Actual cost uses returned `input_tokens` and `output_tokens`. The preflight uses the maximum requested output, so it is deliberately conservative; the in-run budget guard also stops before a further estimated attempt would exceed the cap.
+Expected maximum cost is `tries × (selected input tokens × input price + (2 × requested output tokens) × output price) / 1,000,000`, reflecting the API output cap and budget guard. Each table row’s **Naive time bound** is `tries × (0.5 × input tokens / 5,000 tokens/second + requested output tokens / 100 tokens/second)`. Its ⓘ marker exposes the same equation. This is a coarse sequential planning bound, not a latency prediction. Actual cost uses returned `input_tokens` and `output_tokens`. The preflight uses the maximum requested output, so it is deliberately conservative; the in-run budget guard also stops before a further estimated attempt would exceed the cap.
 
 ## Measurements
 
@@ -26,7 +26,7 @@ Expected maximum cost is `tries × (selected input tokens × input price + (requ
 
 ## Results clipboard
 
-Use **Copy results to clipboard** above the results card to copy a Markdown table of the completed aggregate results, including actual average input/output usage and timing metrics. A green confirmation is shown for two seconds after a successful copy.
+Use **Copy results to clipboard** above the results card to copy a Markdown table of the completed aggregate results, including actual average input/output usage and timing metrics. Use **Copy debug to clipboard** to copy redacted API diagnostics: stream event types, terminal usage, response metadata, and errors (never model output text). Both buttons remain disabled until the relevant data exists. A green confirmation is shown for two seconds after a successful copy.
 
 ## Content Security Policy
 
