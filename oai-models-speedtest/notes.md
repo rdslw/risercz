@@ -19,3 +19,4 @@
 - Updated the workload to use repeatable diceware-word output blocks: one 1,000-word, one-word-per-line block per 2K requested output tokens, with deterministic counter-line instructions every 100 words.
 - Made prompt-preview markers inline with their labels and added a total sequential-time estimate in minutes beside the expected total cost.
 - Replaced Markdown download with clipboard copy and a temporary success confirmation, with an in-page copy fallback for browsers that do not expose the Clipboard API.
+- Investigated a run where generated model usage reported zero input tokens for 5.6 rows even though text was processed. Added a Responses input-token-count calibration path so completed attempts can use a model-specific counted-input fallback instead of charging those rows as output-only.
