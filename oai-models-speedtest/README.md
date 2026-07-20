@@ -1,5 +1,10 @@
 # OpenAI Models Speedtest
 
+<!-- AI-GENERATED-NOTE -->
+> [!NOTE]
+> This is an AI-generated research report. All text and code in this report was created by an LLM (Large Language Model). For more information on how these reports are created, see the [main research repository](https://github.com/rdslw/risercz).
+<!-- /AI-GENERATED-NOTE -->
+
 A self-contained browser benchmark for OpenAI Responses API streaming calls. Open it locally, or use the published demo at:
 
 <https://rdslw.github.io/risercz/oai-models-speedtest/demo.html>
