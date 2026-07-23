@@ -22,3 +22,4 @@
 - Investigated a run where generated model usage reported zero input tokens for 5.6 rows even though text was processed. Added a Responses input-token-count calibration path so completed attempts can use a model-specific counted-input fallback instead of charging those rows as output-only.
 - Cache investigation: the official Responses schema exposes prompt-cache keys/retention but no `no-cache` request parameter. Each benchmark request now begins with a unique five-word sentence so it cannot share the same leading prompt prefix for automatic caching.
 - Added copyable, redacted streaming diagnostics: event types, terminal usage, response metadata, and errors are collected without storing model output text.
+- Added no-reasoning benchmark requests, visible-output short-completion detection, cached-token accounting, and a per-attempt detailed-results table to separate aggregate comparison metrics from individual run evidence.

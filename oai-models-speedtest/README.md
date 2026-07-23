@@ -7,7 +7,7 @@ A self-contained browser benchmark for OpenAI Responses API streaming calls. Ope
 ## Run setup
 
 1. Enter an OpenAI API key. Use **Save key to browser** if you want to retain it in browser `localStorage`; the clear saved/available state confirms what is stored. The key is only sent in the Authorization header to `https://api.openai.com` when a run begins.
-2. Select 1–5 tries per model/mode, a total budget, an approximate generated input size (10K–100K tokens), and requested output tokens (2K–20K). The input prompt uses repeated one-thousand-token lorem-ipsum blocks; hover its ⓘ marker to see the leading instruction. The output instruction requests repeatable diceware-style word blocks: 1,000 random words, one per line, plus a counter every 100 words for each 2K requested output tokens. Hover the output ⓘ marker to preview it. The API receives twice the selected requested output value as `max_output_tokens`. Every benchmark request also starts with a unique five-word sentence to avoid reusing a cacheable leading prompt prefix.
+2. Select 1–5 tries per model/mode, a total budget, an approximate generated input size (10K–100K tokens), and requested output tokens (2K–20K). The input prompt uses repeated one-thousand-token lorem-ipsum blocks; hover its ⓘ marker to see the leading instruction. The output contract is mechanically checkable: it requires exact numbered 1,000-word lowercase diceware blocks, one word per line, and one precisely formatted counter line after each 100 words. The request disables reasoning with `reasoning: {"effort": "none"}` so output capacity is directed to visible text. Hover the output ⓘ marker to preview it. The API receives twice the selected requested output value as `max_output_tokens`. Every benchmark request also starts with a unique five-word sentence to avoid reusing a cacheable leading prompt prefix.
 3. Review each row’s expected maximum cost, total cost, and total sequential time in minutes. The Run button is disabled, and expected-cost cells turn red, when the selected rows’ maximum cost is above the budget.
 4. Runs shuffle the model/mode attempts. Normal mode uses `service_tier: "auto"`; FAST uses `service_tier: "priority"`. Unavailable models/tier combinations are recorded as failures—nothing is substituted.
 
@@ -26,7 +26,7 @@ Expected maximum cost is `tries × (selected input tokens × input price + (2 ×
 
 ## Results clipboard
 
-Use **Copy results to clipboard** above the results card to copy a Markdown table of the completed aggregate results, including actual average input/output usage and timing metrics. Use **Copy debug to clipboard** to copy redacted API diagnostics: stream event types, terminal usage, response metadata, and errors (never model output text). Both buttons remain disabled until the relevant data exists. A green confirmation is shown for two seconds after a successful copy.
+Use **Copy results to clipboard** above the results card to copy a Markdown table of the completed aggregate results, including aggregate visible-output, cached-token, and short-completion metrics. The Detailed results table retains one row per completed attempt, including total, reasoning, and visible output tokens. Use **Copy debug to clipboard** to copy redacted API diagnostics: stream event types, terminal usage, response metadata, and errors (never model output text). Both buttons remain disabled until the relevant data exists. A green confirmation is shown for two seconds after a successful copy.
 
 ## Content Security Policy
 
